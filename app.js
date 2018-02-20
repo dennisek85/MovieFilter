@@ -19,24 +19,24 @@ for(let route in routeInfo){
 
 app.get('/movie/title/:title', (request,response) =>{
     let chosen = movies.filter((movie)=>{
-        return movie.title == request.params.title;
+        return movie.title.toLowerCase().includes(request.params.title.toLowerCase());
     })
     response.json(chosen);
-})
+});
 
 app.get('/movie/year/:year', (request,response) =>{
     let chosen = movies.filter((movie)=>{
-        return movie.year == request.params.year;
+        return movie.year.toLowerCase().includes(request.params.year.toLowerCase());
     })
     response.json(chosen);
-})
+});
 
 app.get('/movie/genre/:genre', (request,response) =>{
     let chosen = movies.filter((movie)=>{
         return movie.genre == request.params.genre;
     })
     response.json(chosen);
-})
+});
 
 app.get(/^[^\.]*$/, (req, res) => {
   res.sendFile(__dirname + "/www/index.html");
