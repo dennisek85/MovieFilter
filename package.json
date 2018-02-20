@@ -1,0 +1,17 @@
+{
+  "name": "javascriptbackend",
+  "version": "1.0.0",
+  "description": "Movie filtering",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "movie"
+  ],
+  "author": "Dennis & André",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
+}
