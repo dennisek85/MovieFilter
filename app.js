@@ -3,7 +3,7 @@ const express = require('express');
 const movies = require('./movies.json');
 
 const app = express();
-
+app.use(express.static("www"));
 /* let routeInfo = {
     '/movie/title/:title': (title) => movie.title == req.params.title,
     '/movie/year/:year': (year) => movie.year == req.params.year
@@ -38,9 +38,9 @@ app.get('/movie/genre/:genre', (request,response) =>{
     response.json(chosen);
 })
 
-app.get('*', (request, response) =>{
-    response.json('Hello');
-})
+app.get(/^[^\.]*$/, (req, res) => {
+  res.sendFile(__dirname + "/www/index.html");
+});
 
 app.listen(3000, ()=> {
     console.log('Listening on port 3000');
