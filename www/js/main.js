@@ -23,6 +23,21 @@ $(document).on("keyup", '.year-field', function () {
                 <p>${movie.storyline}</p>
                 <img src="${movie.posterurl}">
             `);
-        }
-    })
+        };
+    });
+});
+
+$(document).on("click", '#yearButton', function () {
+    let fromYearVal = $('.fromYear').val();
+    let toYearVal = $('.toYear').val();
+    $.getJSON(`/movie/year/from/${fromYearVal}/to/${toYearVal}`, (movies) => {
+        $('.result').empty();
+        for(let movie of movies){
+            $('.result').append(`
+            <h2>${movie.title}</h2>
+            <p>${movie.storyline}</p>
+            <img src="${movie.posterurl}">
+            `);
+        };
+    });
 });

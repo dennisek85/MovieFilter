@@ -26,7 +26,16 @@ app.get('/movie/title/:title', (request,response) =>{
 
 app.get('/movie/year/:year', (request,response) =>{
     let chosen = movies.filter((movie)=>{
-        return movie.year.toLowerCase().includes(request.params.year.toLowerCase());
+        return movie.year.includes(request.params.year);
+    })
+    response.json(chosen);
+});
+
+app.get('/movie/year/from/:fromYear/to/:toYear', (request,response) =>{
+    let from = request.params.fromYear / 1;
+    let to = request.params.toYear / 1;
+    let chosen = movies.filter((movie)=>{
+        return movie.year / 1 >= from && movie.year / 1 <= to;
     })
     response.json(chosen);
 });
