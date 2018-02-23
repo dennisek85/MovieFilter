@@ -41,3 +41,17 @@ $(document).on("click", '#yearButton', function () {
         };
     });
 });
+
+$(document).on("click", '#genreButton', function () {
+    let genreVal = $('.genre-field').val();
+    $.getJSON(`/movie/genre/${genreVal}`, (movies) => {
+        $('.result').empty();
+        for(let movie of movies){
+            $('.result').append(`
+            <h2>${movie.title}</h2>
+            <p>${movie.storyline}</p>
+            <img src="${movie.posterurl}">
+            `);
+        };
+    });
+});

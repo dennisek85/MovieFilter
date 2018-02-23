@@ -42,7 +42,7 @@ app.get('/movie/year/from/:fromYear/to/:toYear', (request,response) =>{
 
 app.get('/movie/genre/:genre', (request,response) =>{
     let chosen = movies.filter((movie)=>{
-        return movie.genre == request.params.genre;
+        return movie.genres.includes(request.params.genre);
     })
     response.json(chosen);
 });
